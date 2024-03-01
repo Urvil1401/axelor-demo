@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<object-views xmlns="http://axelor.com/xml/ns/object-views"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://axelor.com/xml/ns/object-views
+  https://axelor.com/xml/ns/object-views/object-views_6.0.xsd">
+
+   <grid model="com.axelor.contact.db.Event" title="Events" name="event-grid">
+      <field name="title"/>
+      <field name="typeSelect"/>
+      <field name="startDate"/>
+      <field name="endDate"/>
+      <field name="selectStatus"/>
+   </grid>
+   
+   <form model="com.axelor.contact.db.Event" title="Event" name="event-form" width="large" onSave="action-date-validate-on-save">
+	<panel title="mainPanel" colSpan="4">
+      <field name="title"/>
+      <field name="selectStatus"/>
+      <field name="typeSelect"/>
+      <field name="plannedFor"/>
+      <field name="startDate"/>
+      <field name="endDate"/>
+      <field name="notes" colSpan="12"/>
+	</panel>
+   </form>
+   
+   <kanban columnBy="selectStatus" model="com.axelor.contact.db.Event" sequenceBy="typeSelect" title="Events" name="event-kanban" width="160px">
+      <field name="title"/>
+      <field name="typeSelect"/>
+      <field name="plannedFor.fullName"/>
+      <field name="plannedFor.email"/>
+      <field name="plannedFor.phone"/>
+      <field name="startDate"/>
+      <field name="endDate"/>
+       <template><![CDATA[
+        <div class="card">
+            <div class="card-header">
+                <h4>{{title}}</h4><br>
+                <span class="label" ng-class="{'label-success': typeSelect == 1, 'label-warning': typeSelect == 2, 'label-secondary': typeSelect == 0}">
+                    {{typeSelect == 0 ? 'OTHER' : typeSelect == 1 ? 'PHONE' : 'MEETING'}}
+                </span>
+            </div>
+            <div class="card-body">
+                <h4>{{plannedFor.fullName}}</h4>
+                <span ng-if="plannedFor.phone"><i class="fa fa-phone"></i> {{plannedFor.phone}}</span><br>
+                <span ng-if="plannedFor.email"><i class="fa fa-at"></i> {{plannedFor.email}}</span><br>
+            </div><br><br>
+            <div class="card-footer">
+               <span>{{startDate|date:'YYYY-MM-DD HH:MM:SS'}}</span><br>
+               <span>{{endDate|date:'YYYY-MM-DD HH:MM:SS'}}</span>
+            </div>
+        </div>
+     ]]></template>
+   </kanban>
+   
+	<calendar name="event-calander"
+	  title="Events"
+	  model="com.axelor.contact.db.Event"
+	  eventStart="startDate"
+	  eventStop="endDate"
+	  colorBy="typeSelect">
+	 <field name="title"/>
+	</calendar>
+	
+	<action-validate name="action-date-validate-on-save">
+		<error message="Dates are incorrect" if="startDate &gt;= endDate"/>
+	</action-validate>
+
+</object-views>

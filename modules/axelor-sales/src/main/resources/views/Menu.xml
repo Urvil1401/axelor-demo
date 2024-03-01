@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<object-views xmlns="http://axelor.com/xml/ns/object-views"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://axelor.com/xml/ns/object-views
+  https://axelor.com/xml/ns/object-views/object-views_6.0.xsd">
+  
+ <menuitem title="Sale" name="sale-root" icon="fa-line-chart" icon-background="yellow" order="30"/>
+ 
+     <menuitem title="All sale orders" name="sale-root-sale-orders" parent="sale-root" action="action.sale.root.sale.orders"/>
+     <action-view name="action.sale.root.sale.orders" title="All sale orders" model="com.axelor.sales.db.SaleOrder" >
+         <view type="grid" name="sale-order-grid"/>
+         <view type="form" name="sale-order-form"/>
+     </action-view>
+     
+     <menuitem title="Quotation sale orders" name="sale-root-quotation-sale-order" parent="sale-root" tag-count="true" tag-style="important" action="action.sale.root.quotation.sale.orders"/>
+     <action-view name="action.sale.root.quotation.sale.orders" title="Quotation sale orders" model="com.axelor.sales.db.SaleOrder" >
+         <view type="grid" name="quotation-sale-order-grid"/>
+         <view type="form" name="sale-order-form"/>
+         <domain>self.statusSelect = :selectedValue</domain> 
+         <context name="selectedValue" expr="quotation"/>
+     </action-view>
+     
+     <menuitem title="Configuration" name="sale-root-configuration" parent="sale-root"  icon="fa-gear"/>
+     
+            <menuitem title="Product categories" name="sale-root-configuration-product-categories" parent="sale-root-configuration" action="action.sale.root.product.category"/>
+            <action-view name="action.sale.root.product.category" title="Product Category" model="com.axelor.sales.db.ProductCategory">
+               <view type="grid" name="product-category-grid"/>
+               <view type="form" name="product-category-form"/>
+            </action-view>
+            
+            <menuitem title="Product categories tree" name="sale-root-configuration-product-categories-tree" parent="sale-root-configuration"  
+        	action="action.sale.root.product.category.tree"/>
+	        <action-view name="action.sale.root.product.category.tree" title="Product categories tree" model="com.axelor.sales.db.ProductCategory">
+	          <view type="tree" name="product-category-tree"/>
+	        </action-view>
+            
+            <menuitem title="Products" name="sale-root-configuration-product" parent="sale-root-configuration" action="action.sale.root.product"/>
+            <action-view name="action.sale.root.product" title="Products" model="com.axelor.sales.db.Product" >
+               <view type="grid" name="product-grid"/>
+               <view type="form" name="product-form"/>
+            </action-view>
+                  
+     <menuitem title="Data" name="sale-root-data" icon="fa-list" parent="sale-root" order="10"/>
+    
+            <menuitem title="Sale order lines" name="sale-root-data-sale-order-line" parent="sale-root-data" action="action.sale.root.sale.order.line"/>
+            <action-view name="action.sale.root.sale.order.line" title="Sale order lines" model="com.axelor.sales.db.SaleOrderLine">
+               <view type="grid" name="sale-order-line-grid-from-menu"/>
+               <view type="form" name="sale-order-line-form-from-menu"/>
+               <view-param name="search-filters" value="select-status-filter"/>
+            </action-view>            
+             
+            <action-view name="action.sale.root.sale.order.line.dashlet" title="Sale order lines" model="com.axelor.sales.db.SaleOrderLine">
+               <view type="grid" name="sale-order-line-grid-from-menu" />
+               <domain>self.saleOrder.customer.fullName = :fullName</domain>
+               <context name="fullName" expr="fullName"/>
+            </action-view>
+            
+	<search-filters name="select-status-filter" model="com.axelor.sales.db.SaleOrderLine" title="Status select filter">
+		<filter title="Draft lines">
+			<domain>self.saleOrder.statusSelect = 'draft'</domain>
+		</filter>
+		<filter title="Quotation lines">
+			<domain>self.saleOrder.statusSelect = 'quotation'</domain>
+		</filter>
+		<filter title="Confirmed lines">
+			<domain>self.saleOrder.statusSelect = 'confirmed'</domain>
+		</filter>
+		<filter title="Cancelled lines">
+			<domain>self.saleOrder.statusSelect = 'cancelled'</domain>
+		</filter>
+	</search-filters>       
+               
+ </object-views>

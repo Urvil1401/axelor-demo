@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<object-views xmlns="http://axelor.com/xml/ns/object-views"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://axelor.com/xml/ns/object-views
+  https://axelor.com/xml/ns/object-views/object-views_6.0.xsd">
+
+   <grid model="com.axelor.sales.db.ProductCategory" title="Product Categories" name="product-category-grid">
+      <field name="iconSelect" widget="image-select"/>
+      <field name="fullName"/>
+      <field name="name"/>
+      <field name="code"/>
+   </grid>
+   
+   <form model="com.axelor.sales.db.ProductCategory" title="Product Category" name="product-category-form" width="large">
+	<panel title="mainPanel">
+	  <field name="iconSelect" widget="image-select"/>
+      <field name="name"/>
+      <field name="code"/>
+	</panel>
+   </form>
+     
+   <tree name="product-category-tree" title="Prodcut categories tree">
+   		<column name="iconSelect" widget="image-select" type="integer" x-labels="false"/>
+        <column name="name" type="string"/>
+        <column name="code" type="string"/>
+        <node model="com.axelor.sales.db.ProductCategory">
+            <field name="iconSelect"/>
+            <field name="name"/>
+            <field name="code"/>
+        </node>
+        <node model="com.axelor.sales.db.Product" parent="productCategory" onClick="action-button-product-tree-on-click">
+            <field name="name"/>
+            <field name="code"/>
+        </node>
+    </tree>
+    
+   <action-view name="action-button-product-tree-on-click" title="Product"
+		model="com.axelor.sales.db.Product">
+		<view type="form" name="product-form"/>
+		<context name="_showRecord" expr="eval:id"/>
+   </action-view> 
+    
+</object-views>

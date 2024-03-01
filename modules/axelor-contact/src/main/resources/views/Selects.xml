@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<object-views xmlns="http://axelor.com/xml/ns/object-views"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://axelor.com/xml/ns/object-views
+  https://axelor.com/xml/ns/object-views/object-views_6.0.xsd">
+
+	<selection name="contact.event.status.select">
+	   <option value="0" color="grey">DRAFT</option>
+	   <option value="1" color="purple">PROPOSED</option>
+	   <option value="2" color="indigo">ACCEPTED</option>
+	   <option value="3" color="green">FINISHED</option>
+	   <option value="4" color="amber">MISSING_CONTACT</option>
+	   <option value="5" color="brown">POSTPONED</option>
+	   <option value="6" color="red">REFUSED</option>
+	   <option value="7" color="bluegrey">CANCELLED</option>
+   </selection>
+   
+   <selection name="contact.event.type.select">
+	   <option value="0">OTHER</option>
+	   <option value="1">PHONE_CALL</option>
+	   <option value="2">MEETING</option>
+   </selection>
+
+</object-views>

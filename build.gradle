@@ -1,0 +1,41 @@
+plugins {
+  id 'com.axelor.app'
+}
+
+axelor {
+  title "AOP-training"
+  description "AOP TRAINING : HOW TO USE AOP"
+}
+
+allprojects {
+  apply plugin: 'idea'
+  apply plugin: 'eclipse'
+
+  group = 'com.axelor.apps'
+  version = '7.2.0'
+
+  java {
+    toolchain {
+      languageVersion = JavaLanguageVersion.of(11)
+    }
+  }
+
+  afterEvaluate {
+    test {
+      useJUnitPlatform()
+      beforeTest { descriptor ->
+        logger.lifecycle('Running: ' + descriptor)
+      }
+    }
+  }
+
+  configurations {
+    runtimeClasspath.exclude group: "org.eclipse.birt.runtime.3_7_1", module: "org.apache.commons.codec"
+  }
+}
+
+dependencies {
+  api project(':modules:axelor-contact')
+  api project(':modules:axelor-sales')
+  api project(':modules:axelor-invoice')
+}

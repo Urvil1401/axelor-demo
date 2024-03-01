@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<object-views xmlns="http://axelor.com/xml/ns/object-views"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://axelor.com/xml/ns/object-views
+  https://axelor.com/xml/ns/object-views/object-views_6.0.xsd">
+
+	<grid model="com.axelor.invoice.db.InvoiceLine" title="Invoice lines"
+		name="invoice-line-grid">
+		<field name="description"/>
+		<field name="quantity"/>
+		<field name="exTaxTotal"/>
+		<field name="inTaxTotal"/>
+		<field name="taxRate"/>
+		<field name="unitPriceUntaxed"/>
+		<field name="product"/>
+	</grid>
+	
+	<form model="com.axelor.invoice.db.InvoiceLine" title="Invoice line" 
+	    name="invoice-line-form" width="large" onNew="action-invoice-line-group-onNew" readonlyIf="fromMenu">
+	 <panel title="Overview" colSpan="4">
+      <field name="product" onChange="action-invoice-line-group-onChange"/>
+      <field name="description"/>
+      <field name="unitPriceUntaxed" onChange="action-invoice-line-group-onChange"/>
+      <field name="quantity" onChange="action-invoice-line-group-onChange"/>
+      <field name="taxRate" onChange="action-invoice-line-group-onChange-taxRate"/>
+      <field name="exTaxTotal"/>
+	 </panel>
+   </form>
+   
+    <action-group name="action-invoice-line-group-onNew">
+		<action name="action-invoice-line-method-onNew-taxRate"/>
+		<action name="action-invoice-line-method-hide-taxRate"/>
+	</action-group>
+	
+    <action-method name="action-invoice-line-method-onNew-taxRate">
+        <call class="com.axelor.invoice.web.InvoiceLineController" method="settaxRate"/>
+    </action-method>
+    
+    <action-method name="action-invoice-line-method-hide-taxRate">
+        <call class="com.axelor.invoice.web.InvoiceLineController" method="hidetaxRate"/>
+    </action-method>
+    
+     <action-group name="action-invoice-line-group-onChange">
+        <action name="action-invoice-line-method-description-unitpriceUntaxed"/>
+        <action name="action-invoice-line-method-set-exTaxTotal"/>
+        <action name="action-invoice-line-method-set-inTaxTotal"/>
+    </action-group>
+    
+    <action-group name="action-invoice-line-group-onChange-taxRate">
+        <action name="action-invoice-line-method-set-exTaxTotal"/>
+        <action name="action-invoice-line-method-set-inTaxTotal"/>
+    </action-group>
+    
+    <action-method name="action-invoice-line-method-description-unitpriceUntaxed">
+        <call class="com.axelor.invoice.web.InvoiceLineController" method="setDesUnitPrice"/>
+    </action-method>
+    
+    <action-method name="action-invoice-line-method-set-exTaxTotal">
+        <call class="com.axelor.invoice.web.InvoiceLineController" method="setexTaxTotal"/>
+    </action-method>
+    
+    <action-method name="action-invoice-line-method-set-inTaxTotal">
+        <call class="com.axelor.invoice.web.InvoiceLineController" method="setinTaxTotal"/>
+    </action-method>
+   
+</object-views>

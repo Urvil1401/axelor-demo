@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<domain-models xmlns="http://axelor.com/xml/ns/domain-models"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://axelor.com/xml/ns/domain-models
+  https://axelor.com/xml/ns/domain-models/domain-models_6.0.xsd">
+
+  <module name="axelor-sales" package="com.axelor.sales.db"/>
+
+  <entity name="ProductCategory">
+	<string name="name" title="Name" required="true" unique="true"/>
+    <string name="code" title="Code" required="true" unique="true"/>
+    <string name="fullName" title="Full name" namecolumn="true">
+     <![CDATA[
+      if (name == null || code == null) {
+          return "";
+        } else {
+          return "[" + code + "] " + name;
+       }
+     ]]>
+    </string>
+    <integer name="iconSelect" title="Icon" selection="sale.product.icon.select"/>
+    <extra-code >
+    <![CDATA[
+         public static final int ICON_PRESTATION = 0;		
+         public static final int ICON_PRODUCT = 1;	
+    ]]>
+    </extra-code > 
+  </entity>
+
+</domain-models>
