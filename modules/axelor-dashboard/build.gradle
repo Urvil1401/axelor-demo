@@ -1,0 +1,13 @@
+plugins {
+  id 'com.axelor.app'
+}
+
+axelor {
+  title = 'Axelor Dashboard'
+}
+
+dependencies {
+  api project(':modules:axelor-contact')
+  api project(':modules:axelor-sales')
+  api project(':modules:axelor-invoice')
+ }

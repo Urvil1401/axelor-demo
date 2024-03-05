@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<object-views xmlns="http://axelor.com/xml/ns/object-views"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://axelor.com/xml/ns/object-views
+  https://axelor.com/xml/ns/object-views/object-views_6.0.xsd">
+  
+  <menuitem title="Dashboard" name="dashboard-root" icon="fa-tachometer" icon-background="purple" order="15"/>  
+  
+      <menuitem title="Dashboards" name="dashboard-root-dashboards" parent="dashboard-root" action="action.dashboard.root.dashboards"/>
+      <action-view name="action.dashboard.root.dashboards" title="Home Dashboard">
+         <view type="dashboard" name="welcome.dashboard"/>
+      </action-view>  
+  
+</object-views>

@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<object-views xmlns="http://axelor.com/xml/ns/object-views"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://axelor.com/xml/ns/object-views https://axelor.com/xml/ns/object-views/object-views_6.0.xsd">
+
+	<chart name="chart.sales.last.month"
+		title="Sales distribution per product category">
+		<dataset type="jpql">
+        <![CDATA[
+		SELECT
+		    SUM(sol.exTaxTotal) AS totalSum,
+		    sol.product.productCategory.name AS category
+		FROM
+		    SaleOrderLine AS sol
+		LEFT JOIN
+		    SaleOrder so ON sol.saleOrder = so.id
+		LEFT JOIN
+		    Product p ON sol.product = p.id
+		WHERE
+		    so.statusSelect = 'confirmed'
+		    AND so.confirmationDateT BETWEEN CURRENT_DATE - 30 AND CURRENT_DATE
+		GROUP BY
+		    sol.product.productCategory.name
+        ]]>
+        </dataset>
+		<category key="category" type="text" />
+		<series key="totalSum" type="bar" />
+	</chart>
+
+	<chart name="chart.turnover.per.customer" title="Turnover per customer">
+		<search-fields>
+			<field type="reference" name="customer" title="Customer"
+				target="com.axelor.contact.db.Contact" />
+		</search-fields>
+		<dataset type="sql">
+		<![CDATA[
+		SELECT
+            CASE
+               WHEN so.status_select = 'cancelled' THEN 'Proportion of turnover lost on canceled orders'
+               WHEN so.status_select = 'confirmed' THEN 'Proportion of turnover earned on confirmed orders'
+               WHEN so.status_select = 'quotation' THEN 'Proportion of forecast turnover on quotes'
+             END AS display,
+             SUM(sol.ex_tax_total) AS total_sales
+          FROM
+            sales_sale_order so
+        JOIN
+            sales_sale_order_line sol ON so.id = sol.sale_order
+        JOIN
+            contact_contact c ON so.customer = c.id
+        WHERE
+            c.id = :customer 
+            AND so.status_select != 'draft'
+        GROUP BY
+            so.status_select;
+        ]]>
+    </dataset>
+		<category key="display" title="Status"/>
+		<series key="total_sales" type="pie"/>
+	</chart>
+
+	<chart name="chart.amount.invoiced.per.month" title="Amount invoiced per month over 3 months">
+		<search-fields>
+			<field type="datetime" name="invoiceDateT" title="Start date"
+				target="com.axelor.invoice.db.Invoice" />
+			<field type="reference" name="customer" title="Customer"
+				target="com.axelor.contact.db.Contact" />
+		</search-fields>
+		<dataset type="rpc">
+		<![CDATA[
+		SELECT
+            CASE
+               WHEN so.status_select = 'cancelled' THEN 'Proportion of turnover lost on canceled orders'
+               WHEN so.status_select = 'confirmed' THEN 'Proportion of turnover earned on confirmed orders'
+               WHEN so.status_select = 'quotation' THEN 'Proportion of forecast turnover on quotes'
+             END AS display,
+             SUM(sol.ex_tax_total) AS total_sales
+          FROM
+            sales_sale_order so
+        JOIN
+            sales_sale_order_line sol ON so.id = sol.sale_order
+        JOIN
+            contact_contact c ON so.customer = c.id
+        WHERE
+            c.id = :customer 
+            AND so.status_select != 'draft'
+        GROUP BY
+            so.status_select;
+        ]]>
+    </dataset>
+    	<category key="display" title="Status"/>
+		<series key="total_sales" type="bar"/>
+	</chart>
+
+</object-views>
