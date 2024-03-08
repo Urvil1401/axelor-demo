@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<domain-models
+    xmlns="http://axelor.com/xml/ns/domain-models"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://axelor.com/xml/ns/domain-models
+  https://axelor.com/xml/ns/domain-models/domain-models_6.0.xsd">
+
+    <module name="invoice" package="com.axelor.invoice.db" />
+
+    <entity name="Invoice">
+        <track>
+            <field name="invoiceDateT" on="CREATE"/>
+            <field name="statusSelect" on="CREATE"/>
+            <field name="customer" on="CREATE"/>
+            <field name="saleOrder" on="CREATE"/>
+            <field name="generatedInvoice" on="CREATE"/>
+            <message if="true" on="CREATE">Invoice created!</message>   
+        </track>
+
+    </entity>
+
+</domain-models>

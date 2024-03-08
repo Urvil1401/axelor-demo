@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<object-views xmlns="http://axelor.com/xml/ns/object-views"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://axelor.com/xml/ns/object-views
+  https://axelor.com/xml/ns/object-views/object-views_6.0.xsd">
+
+	<grid model="com.axelor.account.db.Account" title="Account"
+		name="account-grid">
+		<field name="fullName" />
+		<field name="code" />
+		<field name="name" />
+	</grid>
+
+	<form model="com.axelor.account.db.Account" title="Account"
+		name="account-form">
+		<panel title="mainPanel">
+			<field name="fullName" />
+			<field name="code" />
+			<field name="name" />
+		</panel>
+	</form>
+
+</object-views>

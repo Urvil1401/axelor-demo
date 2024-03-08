@@ -9,13 +9,13 @@
       <field name="typeSelect"/>
       <field name="startDate"/>
       <field name="endDate"/>
-      <field name="selectStatus"/>
-   </grid>
+      <field name="selectStatus" widget="SingleSelect"/>
+   </grid>   
    
    <form model="com.axelor.contact.db.Event" title="Event" name="event-form" width="large" onSave="action-date-validate-on-save">
 	<panel title="mainPanel" colSpan="4">
       <field name="title"/>
-      <field name="selectStatus"/>
+      <field name="selectStatus" widget="SingleSelect"/>
       <field name="typeSelect"/>
       <field name="plannedFor"/>
       <field name="startDate"/>

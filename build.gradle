@@ -38,4 +38,6 @@ dependencies {
   api project(':modules:axelor-contact')
   api project(':modules:axelor-sales')
   api project(':modules:axelor-invoice')
+  api project(':modules:axelor-dashboard')
+  api project(':modules:axelor-account')
 }

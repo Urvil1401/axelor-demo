@@ -7,6 +7,6 @@ public interface InvoiceService {
 
 	public void setStatusCancel(List<Integer> list);
 	
-	public void invoiceMergeBtn(Map<String, Object> paramMap);
+	public void invoiceMergeBtn(List<Long> list);
 	
 }

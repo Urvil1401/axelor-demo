@@ -23,6 +23,8 @@
     <action-view name="action.dashlet.view.dashboard.grid" title="Upcomming events" 
         model="com.axelor.contact.db.Event">
         <view type="grid" name="event-dashboard-grid"/>
+        <domain>self.endDate >= :currentDate AND self.selectStatus NOT IN (0,5,7)</domain>
+        <context name="currentDate" expr="eval:__date__"/>   
     </action-view>
 
 </object-views>

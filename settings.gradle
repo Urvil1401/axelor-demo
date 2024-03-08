@@ -50,4 +50,6 @@ rootProject.name = "aop-demo"
 include (':modules:axelor-contact')
 include (':modules:axelor-sales')
 include (':modules:axelor-invoice')
+include (':modules:axelor-dashboard')
+include (':modules:axelor-account')
 

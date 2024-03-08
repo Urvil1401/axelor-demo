@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<domain-models xmlns="http://axelor.com/xml/ns/domain-models"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://axelor.com/xml/ns/domain-models
+  https://axelor.com/xml/ns/domain-models/domain-models_6.0.xsd">
+
+  <module name="axelor-contact" package="com.axelor.contact.db"/>
+
+  <entity name="Contact">
+  
+    <many-to-one name="account" title="Account" ref="com.axelor.account.db.Account" required="true"/>
+  
+  </entity>
+
+</domain-models>
+
+

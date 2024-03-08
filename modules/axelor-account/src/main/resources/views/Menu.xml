@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<object-views xmlns="http://axelor.com/xml/ns/object-views"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://axelor.com/xml/ns/object-views
+  https://axelor.com/xml/ns/object-views/object-views_6.0.xsd">
+  
+ <menuitem title="Account" name="account-root" icon="fa-calculator" icon-background="orange" order="40"/>
+ 
+     <menuitem title="Move" name="account-root-move" parent="account-root" action="action.account.root.move"/>
+     <action-view name="action.account.root.move" title="Move" model="com.axelor.account.db.Move" >
+         <view type="grid" name="move-grid"/>
+         <view type="form" name="move-form"/>
+     </action-view>
+     
+     <menuitem title="Move line" name="account-root-move-line" parent="account-root" action="action.account.root.move.line"/>
+     <action-view name="action.account.root.move.line" title="Move line" model="com.axelor.account.db.MoveLine" >
+         <view type="grid" name="move-line-grid"/>
+         <view type="form" name="move-line-form"/>
+     </action-view>
+                  
+     <menuitem title="Data" name="account-root-data" icon="fa-database" parent="account-root"/>
+    
+            <menuitem title="Account" name="account-root-data-account" parent="account-root-data" action="action.account.root.data.account"/>
+            <action-view name="action.account.root.data.account" title="Account" model="com.axelor.account.db.Account">
+               <view type="grid" name="account-grid"/>
+               <view type="form" name="account-form"/>
+            </action-view>            
+               
+ </object-views>

@@ -39,7 +39,7 @@
                WHEN so.status_select = 'cancelled' THEN 'Proportion of turnover lost on canceled orders'
                WHEN so.status_select = 'confirmed' THEN 'Proportion of turnover earned on confirmed orders'
                WHEN so.status_select = 'quotation' THEN 'Proportion of forecast turnover on quotes'
-             END AS display,
+             END AS display_status,
              SUM(sol.ex_tax_total) AS total_sales
           FROM
             sales_sale_order so
@@ -54,41 +54,26 @@
             so.status_select;
         ]]>
     </dataset>
-		<category key="display" title="Status"/>
-		<series key="total_sales" type="pie"/>
+		<category key="display_status" title="Status" />
+		<series key="total_sales" type="pie" />
 	</chart>
 
-	<chart name="chart.amount.invoiced.per.month" title="Amount invoiced per month over 3 months">
+	<chart name="chart.amount.invoiced.per.month"
+		title="Amount invoiced per month over 3 months"
+		onInit="action.attrs.chart.start.date">
 		<search-fields>
-			<field type="datetime" name="invoiceDateT" title="Start date"
-				target="com.axelor.invoice.db.Invoice" />
+			<field type="date" name="startDate" title="Start date" />
 			<field type="reference" name="customer" title="Customer"
 				target="com.axelor.contact.db.Contact" />
 		</search-fields>
 		<dataset type="rpc">
-		<![CDATA[
-		SELECT
-            CASE
-               WHEN so.status_select = 'cancelled' THEN 'Proportion of turnover lost on canceled orders'
-               WHEN so.status_select = 'confirmed' THEN 'Proportion of turnover earned on confirmed orders'
-               WHEN so.status_select = 'quotation' THEN 'Proportion of forecast turnover on quotes'
-             END AS display,
-             SUM(sol.ex_tax_total) AS total_sales
-          FROM
-            sales_sale_order so
-        JOIN
-            sales_sale_order_line sol ON so.id = sol.sale_order
-        JOIN
-            contact_contact c ON so.customer = c.id
-        WHERE
-            c.id = :customer 
-            AND so.status_select != 'draft'
-        GROUP BY
-            so.status_select;
-        ]]>
-    </dataset>
-    	<category key="display" title="Status"/>
-		<series key="total_sales" type="bar"/>
+			com.axelor.dashboard.web.HomeDashboardController:sumExTaxAmountPerInvoiceDate</dataset>
+		<category key="invoiceDate" type="date" title="Month"/>
+		<series key="exTaxAmount" type="bar" title="Invoice Amount"/>
 	</chart>
-
+	
+    <action-attrs name="action.attrs.chart.start.date">
+        <attribute name="value" for="startDate" expr="eval:__date__.minusMonths(3)" /> 
+    </action-attrs>
+    
 </object-views>

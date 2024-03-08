@@ -98,9 +98,7 @@ public class InvoiceController{
         Map<String, Object> paramMap = new HashMap<>();
         paramMap.put("list", longList);
 
-        Beans.get(InvoiceService.class).invoiceMergeBtn(paramMap);   
+        Beans.get(InvoiceService.class).invoiceMergeBtn(longList);   
     }
-
-
-    
+  
 }
