@@ -19,6 +19,7 @@
     <string name="numberAndStreet" title="N° / Street" required="true"/>
     <string name="zip" title="Zip" required="true"/>
     <string name="city" title="City" required="true"/>
+    <string name="importId" title="Import Id" unique="true"/>
     <many-to-one name="country" title="Country" ref="com.axelor.contact.db.Country" required="true"/>
   </entity>
 

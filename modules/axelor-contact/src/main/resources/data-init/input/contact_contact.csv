@@ -1,0 +1,6 @@
+"title";"firstName";"lastName";"birthDate";"email";"phone";"isSubjectToTaxes";"address_full";"address_importId"
+"Mme";"Amandine";"GUICHARD";"12/12/1982";"amandine.guichard@maily.com";"+44 20 7862 9989";"X";"19 Bouvelvard Victor Hugo 92200 Neuilly-sur-Seine";"ADD_02"
+"M.";"Enzo";"LUCAS";"29/02/1984";"enzo.lucas@maily.com";;"X";;
+"Dr";"Jennifer";"COLLIN";;;"+33 4 49 73 12 99";"X";;
+"M.";"Guillaume";"BIQUET";"10/02/1997";"guillaume.biquet@maily.com";;"O";;"ADD_01"
+"Dr";"Clémentin";"BOITTIAUX";"16/07/1997";;;"O";"12 Av. des Champs-Élysées 75008 Paris";"ADD_03"

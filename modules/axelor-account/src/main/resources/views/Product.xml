@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<object-views xmlns="http://axelor.com/xml/ns/object-views"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://axelor.com/xml/ns/object-views
+  https://axelor.com/xml/ns/object-views/object-views_6.0.xsd">
+  
+  <grid model="com.axelor.sales.db.Product" title="Products" name="product-grid" id="account-product-grid" extension="true">
+       <extend target="//field[@name='productCategory']">
+            <insert position="after">
+                <field name="account"/>
+            </insert>
+        </extend>
+  </grid>
+  
+  <form model="com.axelor.sales.db.Product" title="Product" name="product-form" extension="true"
+       id="account-product-form">
+       
+        <extend target="//field[@name='productCategory']">
+            <insert position="after">
+                <field name="account"/>
+            </insert>
+        </extend>
+      
+  </form>
+  
+</object-views>

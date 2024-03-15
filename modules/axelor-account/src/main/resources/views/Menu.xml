@@ -4,7 +4,10 @@
   xsi:schemaLocation="http://axelor.com/xml/ns/object-views
   https://axelor.com/xml/ns/object-views/object-views_6.0.xsd">
   
- <menuitem title="Account" name="account-root" icon="fa-calculator" icon-background="orange" order="40"/>
+<menuitem title="Teamwork" name="menu-team"  hidden="true" id="hide-menu-team"/>
+<menuitem title="Documents" name="menu-dms"  hidden="true" id="hide-menu-dms"/>  
+  
+ <menuitem title="Accounting" name="account-root" icon="fa-calculator" icon-background="orange" order="40"/>
  
      <menuitem title="Move" name="account-root-move" parent="account-root" action="action.account.root.move"/>
      <action-view name="action.account.root.move" title="Move" model="com.axelor.account.db.Move" >

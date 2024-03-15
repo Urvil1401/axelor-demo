@@ -25,7 +25,7 @@
 				<field name="firstName"/>
 				<field name="lastName"/>
 				<field name="title"/>
-				<field name="birthDate" onChange="action-check-birth-date-on-change"/>
+				<field name="birthDate" onChange="action-contact-condition-birth-date"/>
 			</panel>
 		</panel>
 		<panel-tabs>
@@ -72,10 +72,9 @@
 		<domain>self.saleOrder.customer = :sales</domain>
 		<context name="sales" expr="eval:__self__"/>
 	</action-view>
-
-	<action-condition name="action-check-birth-date-on-change">
-		<check field="birthDate" if="birhtDate &lt; 1930-01-01"
-			error="Should be &gt; to 1930" />
-	</action-condition>
+	
+<!--	<action-condition name="action-contact-condition-birth-date">-->
+<!--		<check field="birthDate" if="birhtDate &lt; 01-01-1930" error="Should be &gt; to 1930" />-->
+<!--	</action-condition>-->
 
 </object-views>

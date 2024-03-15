@@ -10,7 +10,6 @@ import java.util.List;
 import com.axelor.inject.Beans;
 import com.axelor.invoice.db.Invoice;
 import com.axelor.invoice.db.InvoiceLine;
-import com.axelor.invoice.db.repo.InvoiceRepository;
 import com.axelor.invoice.service.InvoiceService;
 import com.axelor.rpc.ActionRequest;
 import com.axelor.rpc.ActionResponse;
@@ -50,7 +49,7 @@ public class InvoiceController{
             }
         }    
         taxTotal(request, response);
-        response.setValue("statusSelect", InvoiceRepository.STATUS_DRAFT);
+        response.setValue("statusSelect", 1);
     }
     public void ventilate(ActionRequest request, ActionResponse response) {
     	validate(request, response);

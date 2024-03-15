@@ -4,11 +4,11 @@
   xsi:schemaLocation="http://axelor.com/xml/ns/domain-models
   https://axelor.com/xml/ns/domain-models/domain-models_6.0.xsd">
 
-  <module name="axelor-contact" package="com.axelor.contact.db"/>
+  <module name="axelor-sales" package="com.axelor.sales.db"/>
 
-  <entity name="Contact">
+  <entity name="SaleOrder">
   
-    <many-to-one name="account" title="Account" ref="com.axelor.account.db.Account"/>
+    <date name="estimatedInvoiceDate" title="Estimated invoice date"/>
   
   </entity>
 

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<object-views xmlns="http://axelor.com/xml/ns/object-views"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://axelor.com/xml/ns/object-views
+  https://axelor.com/xml/ns/object-views/object-views_6.0.xsd">
+
+
+	<grid model="com.axelor.sales.db.SaleOrder" title="Sale Orders"
+		name="sale-order-grid" id="account-sale-order-grid" extension="true">
+
+		<field name="estimatedInvoiceDate"/>
+
+	</grid>
+
+
+	<form title="Sale Order" model="com.axelor.sales.db.SaleOrder"
+		name="sale-order-form" id="account-sale-order-form" extension="true">
+
+		<extend target="//panel[@title='Dates']">
+			<attribute name="itemSpan" value="12" />
+		</extend>
+
+		<extend target="//panel[@title='Dates']">
+			<attribute name="readonly" value="false" />
+		</extend>
+
+		<extend target="//field[@name='quotationDateT']">
+			<attribute name="readonly" value="true" />
+		</extend>
+
+		<extend
+			target="//panel[@title='Dates']/field[@name='confirmationDateT']">
+			<attribute name="readonly" value="true" />
+		</extend>
+
+		<extend target="//field[@name='confirmationDateT']">
+			<insert position="after">
+				<field name="estimatedInvoiceDate" />
+			</insert>
+
+		</extend>
+
+		<extend target="//button[@name='confirmQuotationButton']">
+			<insert position="after">
+				<button
+					onClick="save, action-sale-order-method-on-click-generate-invoice-btn"
+					name="generateInvoiceBtn" title="Generate invoice"
+					showIf="statusSelect == 'CONFIRMED'" />
+			</insert>
+
+		</extend>
+
+	</form>
+
+	<action-method
+		name="action-sale-order-method-on-click-generate-invoice-btn">
+
+		<call class="com.axelor.account.web.SaleOrderAccountController"
+			method="generateInvoiceFromSaleOrder"/>
+
+	</action-method>
+
+</object-views>

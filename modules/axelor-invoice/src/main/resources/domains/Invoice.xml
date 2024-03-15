@@ -9,7 +9,7 @@
   <sequence name="invoice.seq" initial="1" increment="1" padding="5" prefix="INV"/>
   <entity name="Invoice">
     <string name="invoiceSeq" title="Sequence" sequence="invoice.seq" readonly="true" namecolumn="true"/>
-    <datetime name="invoiceDateT" title="Invoice date" required="true" readonly="true"/>
+    <datetime name="invoiceDateT" title="Invoice date"/>
     <integer name="statusSelect" title="Status" required="true" readonly="true" selection="invoice.order.status.select"/>
     <decimal name="exTaxTotal" title="Total price without tax" min="0"/>
     <decimal name="inTaxTotal" title="Total price with tax" min="0"/>

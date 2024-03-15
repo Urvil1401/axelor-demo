@@ -17,30 +17,20 @@ public class HomeDashboardServiceImpl implements HomeDashboardService {
         System.out.println("Impl called!");
 
         Query query = JPA.em().createQuery(
-                "SELECT SUM(o.exTaxTotal), o.invoiceDateT " +
-                        "FROM Invoice AS o " +
-                        "WHERE o.statusSelect != 0 " +
-                        "AND o.customer.id = :customerId " +
-                        "AND o.invoiceDateT BETWEEN :startDate AND :endDate " +
-                        "GROUP BY o.invoiceDateT"
+                "SELECT SUM(i.exTaxTotal), i.invoiceDateT " +
+                        "FROM Invoice AS i " +
+                        "WHERE i.statusSelect != 0 " +
+                        "AND i.customer.id = :customerId " +
+                        "AND i.invoiceDateT BETWEEN :startDate AND :endDate " +
+                        "GROUP BY i.invoiceDateT"
         );
         
         
         query.setParameter("customerId", customerId);
-        System.err.println(customerId);
         query.setParameter("startDate", StartDate);
         query.setParameter("endDate", endDate); 
-        System.err.println(StartDate +" "+ endDate);
         
 		List<Object[]> list = query.getResultList();
-		
-		if(list.size() != 0) {
-			System.out.println("List elements: empty"+list);
-			}else {
-				System.out.println("List elements: "+list);
-
-			}
-		list.forEach(System.out::println);
 
         list.forEach(element->{
         	Map<String, Object> dataMap = new HashMap<>();

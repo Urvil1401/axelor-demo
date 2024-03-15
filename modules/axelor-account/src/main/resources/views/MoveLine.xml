@@ -9,18 +9,17 @@
 		<field name="debit" />
 		<field name="credit" />
 		<field name="move" />
-		<field name="account" />
+		<field name="account" />   
 	</grid>
 
 	<form model="com.axelor.account.db.MoveLine" title="Move line"
 		name="move-line-form">
-		<panel title="Overview" readonly="true">
+		<panel title="Overview">
 			<field name="reference" />
 		    <field name="account" />
 			<field name="debit" />
 			<field name="credit" />
 		</panel>
 	</form>
-
 
 </object-views>

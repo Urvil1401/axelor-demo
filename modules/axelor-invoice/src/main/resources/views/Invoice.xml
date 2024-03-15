@@ -25,7 +25,7 @@
 		name="invoice-form" width="large" onNew="action-invoice-method-invoice-date" onSave="action-invoice-method-invoice-tax">
 		<panel>
 			<field name="statusSelect" widget="NavSelect" showTitle="false"
-				readonly="false" selection="invoice.order.status.select" />
+				selection="invoice.order.status.select" />
 			<spacer />
 			<field name="invoiceSeq" readonly="true" hideIf="invoiceSeq==null" />
 			<field name="customer" readonlyIf="invoiceLineList.length > 0" />
@@ -38,7 +38,7 @@
 			<button onClick="action-invoice-method-invoice-validate"
 				name="validated" title="Validate"
 				showIf="statusSelect==0" />
-			<button onClick="action-invoice-method-invoice-ventilate"
+			<button onClick="action-invoice-method-invoice-ventilate-group"
 				name="ventilated" title="Ventilate"
 				showIf="statusSelect==1" />
 			<button onClick="action-invoice-method-invoice-cancel-group"
@@ -80,6 +80,11 @@
 	<action-method name="action-invoice-method-invoice-validate">
 		<call class="com.axelor.invoice.web.InvoiceController" method="validate"/>
 	</action-method>
+	
+    <action-group name="action-invoice-method-invoice-ventilate-group">
+        <action name="action-invoice-method-invoice-ventilate"/>
+        <action name="action-invoice-method-on-click-generate-move-btn"/>
+    </action-group>
 	
 	<action-method name="action-invoice-method-invoice-ventilate">
 		<call class="com.axelor.invoice.web.InvoiceController" method="ventilate"/>

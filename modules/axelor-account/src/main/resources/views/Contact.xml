@@ -1,26 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <object-views xmlns="http://axelor.com/xml/ns/object-views"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://axelor.com/xml/ns/object-views
-  https://axelor.com/xml/ns/object-views/object-views_6.0.xsd">
-  
-  <grid model="com.axelor.contact.db.Contact" title="Contacts" name="contact-grid">
-        <field name="account"/>
-  </grid>
-  
-  <form model="com.axelor.contact.db.Contact" title="Contact" name="contact-form" extension="true"
-       id="account-contact-from">
-       
-        <extend target="//panel[@title='Other Informations']">
-            <attribute name="itemSpan" value="4" />
-        </extend>
-        <extend target="//panel[@title='Other Informations']/field[@name='familyContactSet']">
-            <insert position="after">
-                <field name="account" />
-            </insert>
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://axelor.com/xml/ns/object-views https://axelor.com/xml/ns/object-views/object-views_6.0.xsd">
 
-        </extend>
-      
-  </form>
-  
+	<grid model="com.axelor.contact.db.Contact" title="Contacts"
+		name="contact-grid" id="account-contact-grid" extension="true">
+		<extend target="//field[@name='phone']">
+			<insert position="after">
+				<field name="account" />
+			</insert>
+		</extend>
+	</grid>
+
+	<form model="com.axelor.contact.db.Contact" title="Contact"
+		name="contact-form" extension="true"
+		id="account-contact-form">
+
+		<extend target="//panel[@title='Other Informations']">
+			<attribute name="itemSpan" value="4" />
+		</extend>
+		<extend
+			target="//panel[@title='Other Informations']/field[@name='familyContactSet']">
+			<insert position="after">
+				<field name="account" required="true" />
+			</insert>
+		</extend>
+		
+	</form>
+
 </object-views>

@@ -10,7 +10,7 @@
 
     <integer name="code" title="Code" required="true"/>
     <string name="name" title="Name" required="true"/>
-    <string name="fullName" title="Full name" namecolumn="true"/>
+    <string name="fullName" title="Full name" namecolumn="true" readonly="true"/>
       
   </entity>
   

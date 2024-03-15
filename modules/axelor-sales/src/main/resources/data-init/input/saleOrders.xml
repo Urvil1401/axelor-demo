@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sale-orders>
+
+  <sale-order>
+    <saleOrderSeq>SO2024-01-01 12:34:56:789</saleOrderSeq>
+    <quotationDateT>2024-01-02 09:30:00:000</quotationDateT>
+    <confirmationDateT></confirmationDateT>
+    <statusSelect>quotation</statusSelect>
+    <inTaxTotal>1200</inTaxTotal>
+
+    <customer>
+      <fullName>Mme Amandine GUICHARD</fullName>
+    </customer>
+
+    <saleOrderLineList>
+      <saleOrderLine>
+        <description>Assistance téléphonique</description>
+        <unitPriceUntaxed>1000</unitPriceUntaxed>
+        <quantity>1</quantity>
+        <exTaxTotal>1000</exTaxTotal>
+        <taxRate>0.2</taxRate>
+
+        <product>
+          <name>Assistance téléphonique</name>
+          <code>AT</code>
+          <fullName>[AT] Assistance téléphonique</fullName>
+          <unitPriceUntaxed>1000</unitPriceUntaxed>
+
+          <productCategory>
+            <name>Assistance</name>
+            <code>A</code>
+            <fullName>[A] Assistance</fullName>
+            <iconSelect>0</iconSelect>
+          </productCategory>
+        </product>
+      </saleOrderLine>
+    </saleOrderLineList>
+  </sale-order>
+
+
+  <sale-order>
+    <saleOrderSeq>SO2024-01-03 12:34:56:789</saleOrderSeq>
+    <quotationDateT></quotationDateT>
+    <confirmationDateT></confirmationDateT>
+    <statusSelect>draft</statusSelect>
+    <inTaxTotal>2000</inTaxTotal>
+
+    <customer>
+      <fullName>M. Guillaume BIQUET</fullName>
+    </customer>
+
+    <saleOrderLineList>
+      <saleOrderLine>
+        <description>Forfait maintenance serveur</description>
+        <unitPriceUntaxed>2000</unitPriceUntaxed>
+        <quantity>1</quantity>
+        <exTaxTotal>2000</exTaxTotal>
+        <taxRate>0</taxRate>
+
+        <product>
+          <name>Forfait maintenance serveur</name>
+          <code>FMS</code>
+          <fullName>[FMS] Forfait maintenance serveur</fullName>
+          <unitPriceUntaxed>2000</unitPriceUntaxed>
+
+          <productCategory>
+            <name>Forfait/Abonnement</name>
+            <code>F</code>
+            <fullName>[F] Forfait/Abonnement</fullName>
+            <iconSelect>0</iconSelect>
+          </productCategory>
+        </product>
+      </saleOrderLine>
+    </saleOrderLineList>
+  </sale-order>
+
+</sale-orders>

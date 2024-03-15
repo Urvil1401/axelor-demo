@@ -24,7 +24,7 @@
     <string name="phone" title="Phone number"/>
     <binary name="image" title="Profile picture"/>
     <boolean name="isSubjectToTaxes" title="Apply taxes" required="false" default="false"/>
-    <many-to-one name="address" title="Address" ref="com.axelor.contact.db.Address"/>
+    <many-to-one name="address" title="Address" ref="com.axelor.contact.db.Address" required="true"/>
     <many-to-many name="familyContactSet" title="Family members" ref="com.axelor.contact.db.Contact"/>
     <track>
         <field name="fullName" on="CREATE"/>

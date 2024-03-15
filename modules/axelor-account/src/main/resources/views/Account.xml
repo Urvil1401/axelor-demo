@@ -5,7 +5,7 @@
   https://axelor.com/xml/ns/object-views/object-views_6.0.xsd">
 
 	<grid model="com.axelor.account.db.Account" title="Account"
-		name="account-grid">
+		name="account-grid" editable="true">
 		<field name="fullName" />
 		<field name="code" />
 		<field name="name" />
